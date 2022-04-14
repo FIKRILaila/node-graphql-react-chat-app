@@ -42,18 +42,16 @@ export default function Message({ message }) {
       rootClose
       overlay={
         <Popover className="rounded-pill">
-          <Popover.Content className="d-flex px-0 py-1 align-items-center react-button-popover">
             {reactions.map((reaction) => (
               <Button
-                variant="link"
-                className="react-icon-button"
+                variant=""
+                className="react-icon-button "
                 key={reaction}
                 onClick={() => react(reaction)}
               >
                 {reaction}
               </Button>
             ))}
-          </Popover.Content>
         </Popover>
       }
     >
@@ -66,7 +64,7 @@ export default function Message({ message }) {
   return (
     <div
       className={classNames('d-flex my-3', {
-        'ml-auto': sent,
+        'align-self-end': sent,
         'mr-auto': received,
       })}
     >

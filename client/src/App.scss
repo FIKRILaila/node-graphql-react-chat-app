@@ -1,7 +1,7 @@
 $blue: #1877f2;
 $green: #42b72a;
 
-$border-radius: 0;
+// $border-radius: 0;
 $paragraph-margin-bottom: 0;
 
 $gray-600: rgb(245, 245, 245);
@@ -10,12 +10,7 @@ $gray-600: rgb(245, 245, 245);
 
 body {
   min-height: 100vh;
-  background: linear-gradient(
-    203deg,
-    rgba(131, 58, 180, 0.9) 0%,
-    rgba(253, 29, 29, 0.9) 50%,
-    rgba(252, 176, 69, 0.9) 100%
-  );
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 50%, rgba(0,212,255,1) 100%);
 }
 
 .user-div:hover {

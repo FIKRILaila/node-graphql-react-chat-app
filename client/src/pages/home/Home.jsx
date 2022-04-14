@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import { Row, Button } from 'react-bootstrap'
+import {Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { gql, useSubscription } from '@apollo/client'
 
@@ -93,21 +93,19 @@ export default function Home({ history }) {
 
   return (
     <Fragment>
-      <Row className="bg-white justify-content-around mb-1">
+      <div className='d-flex bg-white justify-content-around mb-1'>
         <Link to="/login">
-          <Button variant="link">Login</Button>
+          <button className='btn text-primary font-weight-bold'>Login</button>
         </Link>
         <Link to="/register">
-          <Button variant="link">Register</Button>
+          <button className='btn text-primary'>Register</button>
         </Link>
-        <Button variant="link" onClick={logout}>
-          Logout
-        </Button>
-      </Row>
-      <Row className="bg-white">
+        <button className='btn text-primary' onClick={logout}>Logout</button>
+      </div>
+      <div  className='d-flex bg-white'>
         <Users />
         <Messages />
-      </Row>
+      </div >
     </Fragment>
   )
 }

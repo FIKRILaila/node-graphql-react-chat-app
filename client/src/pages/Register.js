@@ -34,7 +34,7 @@ export default function Register() {
   const [errors, setErrors] = useState({})
 
   const [registerUser, { loading }] = useMutation(REGISTER_USER, {
-    update: (_, __) => navigate("/login", {replace: true}),
+    onCompleted:() =>navigate("/login", {replace: true}),
     onError: (err) => setErrors(err.graphQLErrors[0].extensions.errors),
   })
 
@@ -45,9 +45,9 @@ export default function Register() {
   }
 
   return (
-    <Row className="bg-white py-5 justify-content-center">
+    <Row className="bg-white py-5 shadow rounded justify-content-center">
       <Col sm={8} md={6} lg={4}>
-        <h1 className="text-center">Register</h1>
+        <h1 className="text-center text-primary">Register</h1>
         <Form onSubmit={submitRegisterForm}>
           <Form.Group>
             <Form.Label className={errors.email && 'text-danger'}>
@@ -105,9 +105,9 @@ export default function Register() {
             />
           </Form.Group>
           <div className="text-center">
-            <Button variant="success" type="submit" disabled={loading}>
+            <button className='btn btn-primary rounded shadow-sm my-4' type="submit" disabled={loading}>
               {loading ? 'loading..' : 'Register'}
-            </Button>
+            </button>
             <br />
             <small>
               Already have an account? <Link to="/login">Login</Link>

@@ -9,7 +9,7 @@ export default function GuardRoute({ authenticated,guest, children }) {
   useEffect(() => {
       authenticated && !user ?  navigate("/login", { replace: true }) : console.log('autheticated');
       guest && user ? navigate("/", { replace: true }) :  console.log('Notautheticated');
-  }, [authenticated,user,guest])
+  }, [authenticated,user,guest,navigate]);
   
   return <>{children}</>;
 }

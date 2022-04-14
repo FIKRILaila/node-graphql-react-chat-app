@@ -40,9 +40,9 @@ export default function Register() {
   }
 
   return (
-    <Row className="bg-white py-5 justify-content-center">
+    <Row className="bg-white py-5 justify-content-center shadow rounded">
       <Col sm={8} md={6} lg={4}>
-        <h1 className="text-center">Login</h1>
+        <h1 className="text-center text-primary">Login</h1>
         <Form onSubmit={submitLoginForm}>
           <Form.Group>
             <Form.Label className={errors.username && 'text-danger'}>
@@ -71,9 +71,9 @@ export default function Register() {
             />
           </Form.Group>
           <div className="text-center">
-            <Button variant="success" type="submit" disabled={loading}>
+            <button className='btn btn-primary rounded shadow-sm my-4' type="submit" disabled={loading}>
               {loading ? 'loading..' : 'Login'}
-            </Button>
+            </button>
             <br />
             <small>
               Don't have an account? <Link to="/register">Register</Link>

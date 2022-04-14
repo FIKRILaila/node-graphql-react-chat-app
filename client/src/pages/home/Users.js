@@ -27,9 +27,8 @@ export default function Users() {
   const { users } = useMessageState()
   const selectedUser = users?.find((u) => u.selected === true)?.username
 
-  const { loading } = useQuery(GET_USERS, {
-    onCompleted: (data) =>
-      dispatch({ type: 'SET_USERS', payload: data.getUsers }),
+  const { loading} = useQuery(GET_USERS, {
+    onCompleted: (data) =>dispatch({ type: 'SET_USERS', payload: data.getUsers }),
     onError: (err) => console.log(err),
   })
 
@@ -62,7 +61,7 @@ export default function Users() {
             }
             className="user-image"
           />
-          <div className="d-none d-md-block ml-2">
+          <div className="d-none d-md-block mx-2">
             <p className="text-success">{user.username}</p>
             <p className="font-weight-light">
               {user.latestMessage

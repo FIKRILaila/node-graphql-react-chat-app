@@ -1,13 +1,18 @@
 const { ApolloServer } = require('apollo-server')
+const contextMiddleware = require('./util/contextMiddleware')
 
 const { sequelize } = require('./models')
 
+require('dotenv').config()
 const resolvers = require('./graphql/resolvers')
 const typeDefs = require('./graphql/typeDefs')
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: contextMiddleware,
+  subscriptions: { path: '/' },
+
 })
 
 server.listen().then(({ url }) => {

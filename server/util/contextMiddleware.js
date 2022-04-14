@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken')
-const { PubSub } = require('apollo-server')
+const  { PubSub } = require('graphql-subscriptions');
 
 const pubsub = new PubSub()
-
+const JWT_SECRET = "laila"
 module.exports = (context) => {
   let token
   if (context.req && context.req.headers.authorization) {
@@ -12,7 +12,7 @@ module.exports = (context) => {
   }
 
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+    jwt.verify(token,process.env.JWT_SECRET || JWT_SECRET, (err, decodedToken) => {
       context.user = decodedToken
     })
   }
