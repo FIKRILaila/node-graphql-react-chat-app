@@ -15,8 +15,19 @@ import { MessageProvider } from './context/message'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
 import { createClient } from 'graphql-ws';
 
+
+const wsLink = new GraphQLWsLink(createClient({
+  url: `ws://localhost:4000/graphql`,	
+  options: {
+    reconnect: true,
+    connectionParams: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+},
+}));
+
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000/',
+  uri: 'http://localhost:4000/graphql/',
 })
 
 const authLink = setContext((_, { headers }) => {
@@ -38,15 +49,7 @@ const authLink = setContext((_, { headers }) => {
 //   },
 // })
 
-const wsLink = new GraphQLWsLink(createClient({
-  url: `ws://localhost:4000/`,	
-  options: {
-    reconnect: true,
-    connectionParams: {
-      Authorization: `Bearer ${localStorage.getItem('token')}`,
-    },
-  },
-}));
+
 
 const splitLink = split(
   ({ query }) => {

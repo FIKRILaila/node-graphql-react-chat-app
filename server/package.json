@@ -1,8 +1,10 @@
 {
+
   "name": "chat_app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
@@ -14,13 +16,17 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "apollo-server": "^3.6.7",
+    "@graphql-tools/schema": "^8.3.8",
+    "apollo-server-core": "^3.6.7",
+    "apollo-server-express": "^3.6.7",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
     "graphql": "^16.3.0",
     "graphql-subscriptions": "^2.0.0",
+    "graphql-ws": "^5.7.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.18.0"
+    "sequelize": "^6.18.0",
+    "ws": "^8.5.0"
   }
 }

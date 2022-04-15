@@ -51,7 +51,6 @@ export default function Home({ history }) {
 
   useEffect(() => {
     if (messageError) console.log(messageError)
-
     if (messageData) {
       const message = messageData.newMessage
       const otherUser = user.username === message.to ? message.from : message.to

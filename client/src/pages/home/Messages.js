@@ -44,11 +44,22 @@ export default function Messages() {
 
   const [
     getMessages,
-    { loading: messagesLoading, data: messagesData },
+    { loading: messagesLoading, data: messagesData,called,refetch },
   ] = useLazyQuery(GET_MESSAGES)
 
   const [sendMessage] = useMutation(SEND_MESSAGE, {
-    onError: (err) => console.log(err),
+    refetchQueries: [{query: GET_MESSAGES}],
+    onQueryUpdated(observableQuery) {
+     
+        return observableQuery.refetch()
+      
+    },
+    onCompleted (sendMessage) {
+      
+      refetch()
+    },
+    awaitRefetchQueries: false,
+    //onError: (err) => refetch.client.refetchQueries(GET_MESSAGES),
   })
 
   useEffect(() => {
@@ -57,6 +68,11 @@ export default function Messages() {
     }
   }, [selectedUser])
 
+  useEffect(() => {
+    if (called) {
+  refetch();
+  }}, [called])
+  
   useEffect(() => {
     if (messagesData) {
       dispatch({

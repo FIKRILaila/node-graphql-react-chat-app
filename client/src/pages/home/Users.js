@@ -29,7 +29,7 @@ export default function Users() {
 
   const { loading} = useQuery(GET_USERS, {
     onCompleted: (data) =>dispatch({ type: 'SET_USERS', payload: data.getUsers }),
-    onError: (err) => console.log(err),
+    onError: (err) => console.log(err)
   })
 
   let usersMarkup
